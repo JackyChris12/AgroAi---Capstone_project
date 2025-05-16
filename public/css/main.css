@@ -1,0 +1,134 @@
+.main-header {
+  background-color: #2f4f1f;
+  padding: 1rem 0;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #88cc44;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.main-nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.main-nav a:hover {
+  color: #88cc44;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5fff0;
+  color: #2f4f1f;
+  font-size: 24px;
+}
+
+.hero {
+  background: url("/images/tomatoes.jpg") center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0, 100, 0, 0.6);
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.animate-text {
+  animation: fadeIn 2s ease-in-out;
+  font-size: 3rem;
+}
+
+.btn {
+  background: #88cc44;
+  padding: 0.7rem 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.features,
+.recommendations,
+.about {
+  padding: 2rem;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+  transition: 2s ease-in-out;
+  cursor: pointer;
+}
+.grid .card:hover {
+  scale: 1.1;
+  background-color: #88cc44;
+}
+
+.card {
+  background: #ffffff;
+  border-left: 5px solid #88cc44;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  background: #2f4f1f;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/*LOGIN*/
+
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

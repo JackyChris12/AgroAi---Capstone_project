@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crops Recommendations</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <h1>Recommended Crops</h1>
+  <ul>
+    <% crops.forEach(crop => { %>
+      <li>
+        <h3><%= crop.name %></h3>
+        <p>Soil Type: <%= crop.soil_type %></p>
+        <p>Climate Conditions: <%= crop.climate_conditions %></p>
+        <p>Region: <%= crop.region %></p>
+      </li>
+    <% }) %>
+  </ul>
+</body>
+</html>

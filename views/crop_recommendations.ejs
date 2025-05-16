@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <%- include('partials/_header') %>
+
+
+    <form action="/recommendation" method="POST">
+  <label for="soil_type">Soil Type</label>
+  <select id="soil_type" name="soil_type">
+    <option value="sandy">Sandy</option>
+    <option value="loamy">Loamy</option>
+    <option value="clay">Clay</option>
+  </select>
+
+  <label for="climate">Climate Conditions</label>
+  <select id="climate" name="climate">
+    <option value="tropical">Tropical</option>
+    <option value="temperate">Temperate</option>
+    <option value="arid">Arid</option>
+  </select>
+
+  <label for="region">Region</label>
+  <input type="text" id="region" name="region" />
+
+  <button type="submit">Get Recommendations</button>
+</form>
+
+
+
+</body>
+</html>
