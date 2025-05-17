@@ -1,0 +1,22 @@
+-- 1. Create users table if it doesn't exist
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(100) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(20) NOT NULL DEFAULT 'farmer',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 2. Update any 'user' roles to 'farmer' (for consistency)
+UPDATE users
+SET role = 'farmer'
+WHERE role = 'user';
+
+-- 3. Set default role to 'farmer' if it's not already
+-- MySQL version-specific: for MySQL 8.x and above
+ALTER TABLE users
+ALTER COLUMN role SET DEFAULT 'farmer';
+
+-- If you are using MySQL 5.x or older, use:
+-- ALTER TABLE users MODIFY role VARCHAR(20) NOT NULL DEFAULT 'farmer';

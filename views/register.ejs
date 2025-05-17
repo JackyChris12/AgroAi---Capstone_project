@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AgroAI Register</title>
+  <link rel="stylesheet" href="/css/main.css" />
   <style>
     * {
       box-sizing: border-box;
@@ -89,24 +90,28 @@
     .login-link a:hover {
       text-decoration: underline;
     }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
   <div class="register-container">
     <h1>🌾 Register for AgroAI</h1>
+    
     <form action="/register" method="POST">
+
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" required />
-
       <label for="email">Email:</label>
-      <input type="text" name="email" id="email" required />
-
+      <input type="email" name="email" id="email" required />
       <label for="password">Password:</label>
       <input type="password" name="password" id="password" required />
-
       <button type="submit">Register</button>
     </form>
-
     <div class="login-link">
       Already have an account? <a href="/login">Login here</a>
     </div>

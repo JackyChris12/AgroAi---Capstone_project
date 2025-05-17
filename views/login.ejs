@@ -101,16 +101,20 @@
     .register-link a:hover {
       text-decoration: underline;
     }
+
+    .error {
+      color: red;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
-
   <p class="tagline">Login and enjoy smarter AgroAI 🌾</p>
-
   <div class="login-container">
     <form class="login-form" method="POST" action="/login">
       <h2>🌿 AgroAI Login</h2>
-
+      
       <div class="input-group">
         <label for="username">Username</label>
         <input
@@ -121,7 +125,6 @@
           placeholder="Enter your username"
         />
       </div>
-
       <div class="input-group">
         <label for="password">Password</label>
         <input
@@ -132,14 +135,11 @@
           placeholder="Enter your password"
         />
       </div>
-
       <button type="submit">Login</button>
-
       <div class="register-link">
         Don't have an account? <a href="/register">Register here</a>
       </div>
     </form>
   </div>
-
 </body>
 </html>

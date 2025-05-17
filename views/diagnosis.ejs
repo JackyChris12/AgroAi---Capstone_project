@@ -1,128 +1,188 @@
-<!-- views/diagnosis.ejs -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AgroAI - Smart Diagnosis</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <title>AgroAI Interface</title>
     <style>
       body {
-        font-family: 'Segoe UI', sans-serif;
-        background: linear-gradient(to bottom right, #e6ffe6, #ccffcc);
+        background: #eef7ee;
         margin: 0;
-        padding: 0;
-        color: #2d6a4f;
-      }
-
-      .hero {
-        background: linear-gradient(135deg, #3fa34d 0%, #207227 100%);
-        color: white;
-        text-align: center;
-        padding: 80px 20px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero h1 {
-        font-size: 3em;
-        animation: fadeInDown 1s ease;
-      }
-
-      .quotes {
-        font-size: 1.2em;
-        margin-top: 20px;
-        animation: fadeInUp 1.5s ease;
+        font-family: Arial, sans-serif;
       }
 
       .container {
-        max-width: 700px;
+        max-width: 600px;
         margin: 40px auto;
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 0 15px rgba(0, 100, 0, 0.1);
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-size: 24px;
       }
 
-      textarea {
-        width: 100%;
-        height: 150px;
+      h1 {
+        font-size: 22px;
+        color: #2e7d32;
+        margin-bottom: 20px;
+      }
+
+      .input-section {
+        background-color: #f5f5f5;
         padding: 15px;
-        border: 2px solid #2d6a4f;
-        border-radius: 10px;
-        resize: none;
-        font-size: 1em;
-        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        margin-bottom: 20px;
       }
 
-      input[type="file"] {
-        margin-bottom: 15px;
+      label {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+        text-align: left;
       }
 
-      button {
-        background-color: #2d6a4f;
+      input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .buttons button {
+        font-size: 16px;
+        padding: 8px 12px;
+        background-color: #2e7d32;
         color: white;
-        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .buttons button:hover {
+        background-color: #27672b;
+      }
+
+      .buttons span {
+        font-size: 16px;
+        color: #555;
+      }
+
+      .action-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .action-buttons button {
+        flex: 1 1 calc(50% - 10px);
+        padding: 12px;
         border: none;
         border-radius: 8px;
+        font-size: 14px;
         cursor: pointer;
-        font-size: 1em;
+        background-color: #e0e0e0;
+        transition: background-color 0.3s ease;
       }
 
-      .response-box {
-        margin-top: 30px;
-        padding: 20px;
-        background: #f0fff0;
-        border-left: 5px solid #2d6a4f;
-        border-radius: 8px;
-        white-space: pre-wrap;
+      .action-buttons button:hover {
+        background-color: #d5d5d5;
       }
 
-      @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-30px); }
-        to { opacity: 1; transform: translateY(0); }
+      .action-buttons button:last-child {
+        background-color: #ff6200;
+        color: white;
       }
 
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
+      .response {
+        margin-top: 20px;
+        text-align: left;
+        color: #444;
+        font-size: 15px;
       }
     </style>
   </head>
   <body>
-    <div class="hero">
-      <h1>AgroAI Smart Diagnosis</h1>
-      <div class="quotes">
-        <p>🌱 Grow Healthy Crops, Harvest Abundance</p>
-        <p>🐄 Your Breed, Your Life</p>
-        <p>🌾 Healthy Soils, Prosperous Farms</p>
-        <p>🍅 A Healthy Farm is a Wealthy Farm</p>
-        <p>🌿 Smart Farming Begins with Smart Diagnosis</p>
-        <p>🚜 Ask. Diagnose. Treat. Thrive.</p>
-      </div>
-    </div>
-
     <div class="container">
-      <form action="/diagnose" method="POST" enctype="multipart/form-data">
-        <label for="question"><strong>Ask your farming question:</strong></label>
-        <textarea
-          name="question"
-          id="question"
-          placeholder="e.g. My maize leaves are turning yellow, what could be wrong?"
-        ></textarea>
+      <h1>
+        Welcome, <span id="username">Farmer</span><br />How can AgroAI assist
+        your farm today?
+      </h1>
 
-        <label for="image"><strong>Upload image (optional):</strong></label>
-        <input type="file" name="image" accept="image/*" />
-
-        <button type="submit">Submit Diagnosis</button>
-      </form>
-
-      <% if (response) { %>
-        <div class="response-box">
-          <h3>AgroAI says:</h3>
-          <p><%= response %></p>
+      <div class="input-section">
+        <label for="query">Ask about crop diseases or treatments</label>
+        <input
+          type="text"
+          id="query"
+          name="query"
+          placeholder="e.g., Maize blight or chicken health"
+        />
+        <div class="buttons">
+          <button title="Notifications">🔔</button>
+          <button onclick="askAgroAI()">
+            <span style="color: white">🌿</span> AgroAI
+          </button>
+          <button title="Let AgroAI Think">🤔 Think</button>
+          <span>AgroAI</span>
+          <button title="Scroll to Top">↑</button>
         </div>
-      <% } %>
+      </div>
+
+      <div class="action-buttons">
+        <button>🌱 Crop Diagnosis</button>
+        <button>🐔 Animal Health</button>
+        <button>🌾 Soil Insights</button>
+        <button>👨‍🌾 Farmer Profiles</button>
+        <button>🏡 Farm Management New</button>
+      </div>
+
+      <div id="response" class="response"></div>
     </div>
+
+    <script>
+      // Username update (temporary local usage)
+      const username = localStorage.getItem("username") || "Farmer";
+      document.getElementById("username").textContent = username;
+
+      // Ask AgroAI
+      async function askAgroAI() {
+        const query = document.getElementById("query").value.trim();
+        const responseBox = document.getElementById("response");
+        if (!query) {
+          responseBox.textContent =
+            "Please enter a question about your crops or animals.";
+          return;
+        }
+
+        responseBox.textContent = "Thinking... 🤔 (This can take a few seconds)";
+
+        try {
+          const res = await fetch("/diagnosis", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ query }),
+          });
+
+          const data = await res.json();
+          responseBox.textContent = data.answer || "No answer received.";
+        } catch (error) {
+          console.error("AgroAI error:", error);
+          responseBox.textContent =
+            "There was a problem processing your question.";
+        }
+      }
+      
+    </script>
   </body>
 </html>
